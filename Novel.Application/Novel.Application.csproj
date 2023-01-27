@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Novel.Application.Contracts\Novel.Application.Contracts.csproj" />
+      <ProjectReference Include="..\Novel.Domain\Novel.Domain.csproj" />
+      <ProjectReference Include="..\Novel.EntityFrameworkCore\Novel.EntityFrameworkCore.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Volo.Abp.AutoMapper" Version="7.0.1" />
+    </ItemGroup>
+
+</Project>
