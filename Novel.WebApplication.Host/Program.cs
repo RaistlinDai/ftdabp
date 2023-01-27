@@ -1,7 +1,7 @@
-namespace ftdnet;
+namespace Novel.WebApplication.Host;
 
 /**
- * Ftdnet项目入口
+ * Ftdabp项目入口
  */
 public class Program
 {
@@ -12,7 +12,7 @@ public class Program
 
     private static IHostBuilder CreateHostBuilder(string[] args)
     {
-        return Host.CreateDefaultBuilder(args)
+        return Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(builder =>
             {
                 builder.UseContentRoot(Directory.GetCurrentDirectory());
