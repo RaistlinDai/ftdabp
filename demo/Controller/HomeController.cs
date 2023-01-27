@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc;
 
-namespace ftdnet;
+namespace ftdabp;
 
 public class HomeController : AbpController
 {

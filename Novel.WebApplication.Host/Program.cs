@@ -12,12 +12,14 @@ public class Program
 
     private static IHostBuilder CreateHostBuilder(string[] args)
     {
-        return Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(builder =>
-            {
-                builder.UseContentRoot(Directory.GetCurrentDirectory());
-                builder.UseIISIntegration();
-                builder.UseStartup<Startup>();
-            });
+        return Microsoft.Extensions.Hosting.Host
+            .CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(
+                builder =>
+                {
+                    builder.UseContentRoot(Directory.GetCurrentDirectory());
+                    builder.UseIISIntegration();
+                    builder.UseStartup<Startup>();
+                });
     }
 }

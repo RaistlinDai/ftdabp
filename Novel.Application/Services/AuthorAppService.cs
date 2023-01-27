@@ -1,7 +1,7 @@
 ﻿using Novel.Application.Contracts.Dtos.Author;
 using Novel.Application.Contracts.Interfaces;
 using Novel.Domain.Author.Entities;
-using Novel.EntityFrameworkCore.Repositories;
+using Novel.Domain.Author.Repository;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -10,9 +10,9 @@ namespace Novel.Application.Services;
 
 public class AuthorAppService : ApplicationService, IAuthorAppService
 {
-    private readonly AuthorRepository _authorRepository;
+    private readonly IAuthorRepository _authorRepository;
 
-    public AuthorAppService(AuthorRepository authorRepository)
+    public AuthorAppService(IAuthorRepository authorRepository)
     {
         _authorRepository = authorRepository;
     }
