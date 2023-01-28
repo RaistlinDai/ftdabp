@@ -16,14 +16,14 @@ public class BookAppServiceTest: NovelApplicationTestBase
     [Fact]
     public async Task Should_Get_List_Of_Books()
     {
-        var result = await _bookAppService.GetListAsync
-        (
-            new BookGetListDto()
-        );
+        BookGetListDto listDto = new BookGetListDto();
+        
+        var result = await _bookAppService.GetListAsync(listDto);
         
         // Assert
         result.TotalCount.ShouldBe(2);
-        result.Items.ShouldContain(a => a.Name == "马保国大师传");
+        result.Items[0].Name.ShouldBe("马保国大师传");
+        result.Items[1].Name.ShouldBe("深入理解JVM");
     }
     
 }

@@ -3,7 +3,7 @@ using Volo.Abp.Auditing;
 
 namespace Novel.Application.Contracts.Book.Dtos;
 
-public class ChapterDto : EntityDto, IHasCreationTime
+public class ChapterDto : EntityDto<Guid>, IHasCreationTime
 {
     public Guid VolumeId { get; set; }
 

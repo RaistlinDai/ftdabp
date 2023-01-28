@@ -16,5 +16,5 @@ public class BookCreateDto : EntityDto
     
     public string? CategoryName { get; set; }
     
-    public List<VolumeDto> Volumes { get; protected set; } 
+    public List<VolumeCreateDto> Volumes { get; protected set; } 
 }

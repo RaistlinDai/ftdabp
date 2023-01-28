@@ -7,7 +7,7 @@ namespace Novel.Domain.Book.Entities;
 
 public class Volume : Entity<Guid>, IHasCreationTime
 {
-    public virtual Book book { get; set; }
+    public virtual Book Book { get; set; }
     
     public Guid BookId { get; set; }
     

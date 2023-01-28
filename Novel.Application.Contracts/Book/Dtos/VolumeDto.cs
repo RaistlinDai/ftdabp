@@ -3,7 +3,7 @@ using Volo.Abp.Auditing;
 
 namespace Novel.Application.Contracts.Book.Dtos;
 
-public class VolumeDto : EntityDto, IHasCreationTime
+public class VolumeDto : EntityDto<Guid>, IHasCreationTime
 {
     public virtual BookDto Book { get; set; }
     

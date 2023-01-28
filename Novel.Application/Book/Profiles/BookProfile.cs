@@ -14,10 +14,20 @@ public class BookProfile : Profile
             .Ignore(book => book.CreationTime);
         
         CreateMap<Domain.Book.Entities.Volume, VolumeDto>();
+        CreateMap<VolumeCreateDto, Domain.Book.Entities.Volume>().
+            Ignore(volume => volume.Id)
+            .Ignore(volume => volume.CreationTime)
+            .Ignore(volume => volume.Book);
+        
         CreateMap<Domain.Book.Entities.Chapter, ChapterDto>();
+        CreateMap<ChapterCreateDto, Domain.Book.Entities.Chapter>()
+            .Ignore(chapter => chapter.Id)
+            .Ignore(chapter => chapter.CreationTime)
+            .Ignore(chapter => chapter.Volume);
         
         CreateMap<Domain.Book.Entities.ChapterText, ChapterTextDto>();
-        CreateMap<ChapterTextDto, Domain.Book.Entities.ChapterText>()
-            .Ignore(chap => chap.Id);
+        CreateMap<ChapterTextCreateDto, Domain.Book.Entities.ChapterText>()
+            .Ignore(text => text.Id)
+            .Ignore(text => text.Chapter);
     }
 }
