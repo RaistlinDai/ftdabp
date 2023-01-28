@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Novel.Application.Author.Profiles;
+using Novel.Application.Book.Profiles;
 using Novel.Domain;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
@@ -19,6 +20,7 @@ public class NovelApplicationModule : AbpModule
             options =>
             {
                 options.AddProfile<AuthorProfile>(true);
+                options.AddProfile<BookProfile>(true);
             });
     }
 }

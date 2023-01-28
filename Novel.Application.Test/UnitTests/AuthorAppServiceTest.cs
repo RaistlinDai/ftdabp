@@ -34,11 +34,13 @@ public class AuthorAppServiceTest : NovelApplicationTestBase
     {
         var authors = await _authorAppService.GetListAsync(new PagedAndSortedResultRequestDto());
 
-        AuthorDto inputDto = new AuthorDto();
-        inputDto.Id = authors.Items[0].Id;
-        inputDto.Name = authors.Items[0].Name;
-        inputDto.Description = "Update author";
-        
+        AuthorDto inputDto = new AuthorDto
+        {
+            Id = authors.Items[0].Id,
+            Name = authors.Items[0].Name,
+            Description = "Update author"
+        };
+
         await _authorAppService.UpdateAsync(inputDto.Id, inputDto);
 
         var result = await _authorAppService.GetAsync(inputDto.Id);

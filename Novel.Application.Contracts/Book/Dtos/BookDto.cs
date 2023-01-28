@@ -1,6 +1,9 @@
-﻿namespace Novel.Application.Contracts.Dtos.Book;
+﻿using Volo.Abp.Application.Dtos;
+using Volo.Abp.Auditing;
 
-public class BookDto
+namespace Novel.Application.Contracts.Book.Dtos;
+
+public class BookDto : EntityDto<Guid>, IHasCreationTime
 {
     public string Name { get; set; }
     
@@ -15,4 +18,6 @@ public class BookDto
     public string? CategoryName { get; set; }
     
     public List<VolumeDto> Volumes { get; protected set; }
+    
+    public DateTime CreationTime { get; }
 }

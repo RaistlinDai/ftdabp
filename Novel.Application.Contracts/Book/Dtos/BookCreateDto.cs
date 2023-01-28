@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Application.Dtos;
 
-namespace Novel.Application.Contracts.Dtos.Book;
+namespace Novel.Application.Contracts.Book.Dtos;
 
 public class BookCreateDto : EntityDto
 {
