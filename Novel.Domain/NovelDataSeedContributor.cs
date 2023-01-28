@@ -1,13 +1,11 @@
-﻿using Novel.Domain.Author.Entities;
-using Novel.Domain.Book.Entities;
-using Novel.Domain.Category.Entities;
+﻿using Novel.Domain.Book.Entities;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Guids;
 using Volo.Abp.Uow;
 
-namespace Novel.TestBase.Test;
+namespace Novel.Domain;
 
 /// <summary>
 /// 数据种子，为UnitTest准备
@@ -15,15 +13,15 @@ namespace Novel.TestBase.Test;
 /// </summary>
 public class NovelDataSeedContributor : IDataSeedContributor, ITransientDependency
 {
-    private readonly IRepository<Author, Guid> _authorRepository;
-    private readonly IRepository<Book, Guid> _bookRepository;
-    private readonly IRepository<Category, Guid> _categoryRepository;
+    private readonly IRepository<Author.Entities.Author, Guid> _authorRepository;
+    private readonly IRepository<Book.Entities.Book, Guid> _bookRepository;
+    private readonly IRepository<Category.Entities.Category, Guid> _categoryRepository;
     private readonly List<Guid> _guids;
 
     public NovelDataSeedContributor(
-        IRepository<Author, Guid> authorRepository,
-        IRepository<Book, Guid> bookRepository,
-        IRepository<Category, Guid> categoryRepository,
+        IRepository<Author.Entities.Author, Guid> authorRepository,
+        IRepository<Book.Entities.Book, Guid> bookRepository,
+        IRepository<Category.Entities.Category, Guid> categoryRepository,
         IGuidGenerator guidGenerator)
     {
         _authorRepository = authorRepository;
@@ -48,7 +46,7 @@ public class NovelDataSeedContributor : IDataSeedContributor, ITransientDependen
 
     private async Task CreateAuthorAsync()
     {
-        var author = new Author(
+        var author = new Author.Entities.Author(
             _guids[0],
             "zal",
             "Aaron Luo"
@@ -58,7 +56,7 @@ public class NovelDataSeedContributor : IDataSeedContributor, ITransientDependen
 
     private async Task CreateCategoryAsync()
     {
-        var category = new Category(
+        var category = new Category.Entities.Category(
             _guids[1],
             "History"
         );
@@ -67,7 +65,7 @@ public class NovelDataSeedContributor : IDataSeedContributor, ITransientDependen
 
     private async Task CreateBookAsync()
     {
-        Book book01 = new Book(
+        Book.Entities.Book book01 = new Book.Entities.Book(
             _guids[2],
             "马保国大师传",
             "马保国大师野史",
@@ -79,7 +77,7 @@ public class NovelDataSeedContributor : IDataSeedContributor, ITransientDependen
         book01.AddVolume(new Volume("闪电五连鞭", "马大师最著名招式"));
         book01.Volumes[0].AddChapter(new Chapter("Chapter 1", "结化发", null));
         
-        Book book02 = new Book(
+        Book.Entities.Book book02 = new Book.Entities.Book(
             _guids[3],
             "深入理解JVM",
             "Java丛书",

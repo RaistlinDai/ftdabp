@@ -6,6 +6,10 @@ using Volo.Abp.Uow;
 
 namespace Novel.TestBase;
 
+/// <summary>
+/// All test classes are derived from this base test class
+/// </summary>
+/// <typeparam name="TStartupModule"></typeparam>
 public abstract class NovelTestBase<TStartupModule> : AbpIntegratedTest<TStartupModule>
     where TStartupModule : IAbpModule
 {

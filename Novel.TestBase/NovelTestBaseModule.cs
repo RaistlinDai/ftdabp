@@ -8,13 +8,31 @@ using Volo.Abp.Threading;
 
 namespace Novel.TestBase;
 
-[DependsOn(typeof(AbpAutofacModule), typeof(AbpTestBaseModule), typeof(NovelDomainModule))]
+[DependsOn(typeof(AbpAutofacModule))]
+[DependsOn(typeof(AbpTestBaseModule))]
+[DependsOn(typeof(NovelDomainModule))]
 public class NovelTestBaseModule : AbpModule
 {
-    /// <summary>
-    /// 加载公共数据种子
-    /// </summary>
-    /// <param name="context"></param>
+    public override void PreConfigureServices(ServiceConfigurationContext context)
+    {
+
+    }
+    
+    public override void ConfigureServices(ServiceConfigurationContext context)
+    {
+
+    }
+    
+    public override void PostConfigureServices(ServiceConfigurationContext context)
+    {
+
+    }
+    
+    public override void OnPreApplicationInitialization(ApplicationInitializationContext context)
+    {
+
+    }
+    
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
     {
         AsyncHelper.RunSync(
@@ -26,5 +44,15 @@ public class NovelTestBaseModule : AbpModule
                     .GetRequiredService<IDataSeeder>()
                     .SeedAsync();
             });
+    }
+    
+    public override void OnPostApplicationInitialization(ApplicationInitializationContext context)
+    {
+
+    }
+    
+    public override void OnApplicationShutdown(ApplicationShutdownContext context)
+    {
+
     }
 }

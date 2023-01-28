@@ -28,6 +28,7 @@ public sealed class AuthorRepositoryTest : NovelEntityFrameworkCoreTestBase
                         _guidGenerator.Create(),
                         "ftd",
                         "Genius writer"));
+                result.Name.ShouldBe("ftd");
                 result.Id.ShouldNotBe(Guid.Empty);
             });
     }

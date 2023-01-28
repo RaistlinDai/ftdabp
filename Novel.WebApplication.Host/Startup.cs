@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 
 namespace Novel.WebApplication.Host;

@@ -9,6 +9,7 @@ public class AuthorProfile : Profile
 {
     public AuthorProfile()
     {
+        CreateMap<Author, AuthorDto>();
         CreateMap<AuthorDto, Author>();
         CreateMap<AuthorCreateDto, Author>()
             .Ignore(author => author.Id);

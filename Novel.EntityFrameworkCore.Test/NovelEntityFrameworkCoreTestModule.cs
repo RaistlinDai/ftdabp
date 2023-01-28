@@ -47,6 +47,7 @@ public class NovelEntityFrameworkCoreTestModule : AbpModule
             .UseSqlite(connection)
             .Options;
 
+        // Sqlite中创建数据库表
         using var context = new NovelDbContext(options);
         context.GetService<IRelationalDatabaseCreator>().CreateTables();
 

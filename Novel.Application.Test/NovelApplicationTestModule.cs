@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.DependencyInjection;
+using Novel.EntityFrameworkCore.Test;
 using Novel.TestBase;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore;
@@ -11,44 +12,7 @@ using Volo.Abp.Modularity;
 namespace Novel.Application.Test;
 
 [DependsOn(typeof(NovelApplicationModule))]
-[DependsOn(typeof(AbpEntityFrameworkCoreSqliteModule))]
-[DependsOn(typeof(NovelTestBaseModule))]
+[DependsOn(typeof(NovelEntityFrameworkCoreTestModule))]
 public class NovelApplicationTestModule : AbpModule
 {
-    private SqliteConnection _sqliteConnection;
-
-    public override void ConfigureServices(ServiceConfigurationContext context)
-    {
-        _sqliteConnection = CreateDatabaseAndGetConnection();
-        context.Services.Configure<AbpDbContextOptions>(
-            options =>
-            {
-                options.Configure(configurationContext =>
-                    configurationContext.DbContextOptions.UseSqlite(_sqliteConnection));
-            });
-    }
-
-    public override void OnApplicationShutdown(ApplicationShutdownContext context)
-    {
-        _sqliteConnection.Dispose();
-    }
-
-    /// <summary>
-    /// 测试数据库连接池 - Sqlite
-    /// </summary>
-    /// <returns></returns>
-    private static SqliteConnection CreateDatabaseAndGetConnection()
-    {
-        var connection = new SqliteConnection("Data Source=:memory:");
-        connection.Open();
-
-        // var options = new DbContextOptionsBuilder()<NovelDbContext>()
-        //     .UseSqlite(connection)
-        //     .Options;
-        //
-        // using var context = new NovelDbContext(options);
-        // context.GetService<IRelationalDatabaseCreator>().CreateTables();
-
-        return connection;
-    }
 }

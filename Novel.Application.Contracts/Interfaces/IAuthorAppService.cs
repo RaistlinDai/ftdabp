@@ -6,9 +6,13 @@ namespace Novel.Application.Contracts.Interfaces;
 
 public interface IAuthorAppService : IApplicationService
 {
-    Task CreateAsync(AuthorCreateDto inputDto);
+    Task<AuthorDto> CreateAsync(AuthorCreateDto inputDto);
 
-    Task<AuthorDto> GetByIdAsync(Guid id);
+    Task<AuthorDto> GetAsync(Guid id);
 
-    Task<PagedResultDto<AuthorDto>> GetPagedListAsync(PagedAndSortedResultRequestDto pagedAndSortedDto);
+    Task UpdateAsync(Guid id, AuthorDto inputDto);
+
+    Task DeleteAsync(Guid id);
+
+    Task<PagedResultDto<AuthorDto>> GetListAsync(PagedAndSortedResultRequestDto pagedAndSortedDto);
 }
