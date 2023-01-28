@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Application.Dtos;
 
-namespace Novel.Application.Contracts.Dtos.Author;
+namespace Novel.Application.Contracts.Author.Dtos;
 
 public class AuthorCreateDto : EntityDto
 {

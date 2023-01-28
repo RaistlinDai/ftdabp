@@ -1,8 +1,8 @@
 ﻿using Volo.Abp.Application.Services;
-using Novel.Application.Contracts.Dtos.Author;
+using Novel.Application.Contracts.Author.Dtos;
 using Volo.Abp.Application.Dtos;
 
-namespace Novel.Application.Contracts.Interfaces;
+namespace Novel.Application.Contracts.Author.Interfaces;
 
 public interface IAuthorAppService : IApplicationService
 {

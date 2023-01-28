@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Novel.Application.Profiles;
+using Novel.Application.Author.Profiles;
 using Novel.Domain;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;

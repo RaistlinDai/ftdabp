@@ -1,5 +1,5 @@
-﻿using Novel.Application.Contracts.Dtos.Author;
-using Novel.Application.Contracts.Interfaces;
+﻿using Novel.Application.Contracts.Author.Dtos;
+using Novel.Application.Contracts.Author.Interfaces;
 using Shouldly;
 using Volo.Abp.Application.Dtos;
 

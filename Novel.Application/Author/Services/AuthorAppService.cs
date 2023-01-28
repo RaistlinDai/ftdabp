@@ -1,12 +1,11 @@
-﻿using Novel.Application.Contracts.Dtos.Author;
-using Novel.Application.Contracts.Interfaces;
-using Novel.Domain.Author.Entities;
+﻿using Novel.Application.Contracts.Author.Dtos;
+using Novel.Application.Contracts.Author.Interfaces;
 using Novel.Domain.Author.Repository;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 
-namespace Novel.Application.Services;
+namespace Novel.Application.Author.Services;
 
 public class AuthorAppService : ApplicationService, IAuthorAppService
 {
@@ -19,15 +18,15 @@ public class AuthorAppService : ApplicationService, IAuthorAppService
     
     public async Task<AuthorDto> CreateAsync(AuthorCreateDto inputDto)
     {
-        var author = ObjectMapper.Map<AuthorCreateDto, Author>(inputDto);
+        var author = ObjectMapper.Map<AuthorCreateDto, Domain.Author.Entities.Author>(inputDto);
         await _authorRepository.InsertAsync(author);
-        return ObjectMapper.Map<Author, AuthorDto>(author);
+        return ObjectMapper.Map<Domain.Author.Entities.Author, AuthorDto>(author);
     }
 
     public async Task<AuthorDto> GetAsync(Guid id)
     {
         var author = await _authorRepository.GetAsync(id);
-        return ObjectMapper.Map<Author, AuthorDto>(author);
+        return ObjectMapper.Map<Domain.Author.Entities.Author, AuthorDto>(author);
     }
 
     public async Task UpdateAsync(Guid id, AuthorDto inputDto)
@@ -49,7 +48,7 @@ public class AuthorAppService : ApplicationService, IAuthorAppService
     {
         // 默认sorting
         if (pagedAndSortedDto.Sorting.IsNullOrWhiteSpace())
-            pagedAndSortedDto.Sorting = nameof(Author.Name);
+            pagedAndSortedDto.Sorting = nameof(Domain.Author.Entities.Author.Name);
         
         var count = await _authorRepository.CountAsync();
         
@@ -61,7 +60,7 @@ public class AuthorAppService : ApplicationService, IAuthorAppService
         return new PagedResultDto<AuthorDto>
         {
             TotalCount = count,
-            Items = ObjectMapper.Map<List<Author>, List<AuthorDto>>(list)
+            Items = ObjectMapper.Map<List<Domain.Author.Entities.Author>, List<AuthorDto>>(list)
         };
     }
 }
